@@ -34,7 +34,7 @@ export const changePassword = async (req, res) => {
   try {
     const { userId } = req.body.user;
 
-    const { currentPassword, newPassword, confirmPassword } = req.body;
+    const { currentPassword, newPassword, confirmedPassword } = req.body;
 
     const userExist = await pool.query({
       text: `SELECT * FROM tbluser WHERE id = $1`,
@@ -49,7 +49,7 @@ export const changePassword = async (req, res) => {
         .json({ status: "failed", message: "User not found." });
     }
 
-    if (newPassword !== confirmPassword) {
+    if (newPassword !== confirmedPassword) {
       return res.status(401).json({
         status: "failed",
         message: "New Passwords does not match.",

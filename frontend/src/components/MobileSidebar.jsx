@@ -35,7 +35,7 @@ const MobileSidebar = () => {
                             ? 'bg-gray-200 text-gray-900 dark:bg-gray-700 dark:text-white' 
                             : 'text-gray-700 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-600'
                         }`}
-                        onClick={() => setSelected(index)} // Optional: Set selected index if needed
+                        //onClick={() => setSelected(index)} // Optional: Set selected index if needed
                       >
                         {label}
                       </Popover.Button>
