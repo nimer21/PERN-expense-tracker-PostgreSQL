@@ -286,7 +286,8 @@ const SettingsForm = () => {
         variant="outline"
         loading={loading}
         type="reset"
-        className='px-6 bg-transparent text-black dark:text-white border border-gray-200 dark:border-gray-700'
+        className='px-6 bg-transparent text-black border-gray-200 dark:border-gray-700'
+        // dark:text-white border
         >
             Reset
         </Button>

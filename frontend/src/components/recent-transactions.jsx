@@ -195,7 +195,7 @@ const RecentTransactions = ({ data }) => {
                   >
                     {item?.type === "income" ? "+" : "-"}
                   </span>
-                  ${formatCurrency(item?.amount)}
+                  {formatCurrency(item?.amount)}
                 </td>
               </tr>
             ))}

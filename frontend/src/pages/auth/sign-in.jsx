@@ -52,7 +52,7 @@ const SignIn = () => {
         localStorage.setItem("user", JSON.stringify(userInfo));
         setCredentials(userInfo);
         setTimeout(() => {
-          navigate("/overview");
+          navigate("/dashboard");
         }, 1500);
       }
     } catch (error) {

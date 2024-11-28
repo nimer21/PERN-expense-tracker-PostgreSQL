@@ -18,6 +18,10 @@ const Dashboard = () => {
     try {
       const { data } = await api.get(URL);
       setData(data);
+      // console.log("data: " , JSON.stringify(data));
+      console.log("data: " , data);
+      console.log("data?.lastAccount?.lenght: " , data?.lastAccount.lenght|| 0); // Default to 0 if undefined
+      
     } catch (error) {
       console.error(error);
       toast.error(error?.response?.data?.message || "Something unsexpected happened. Try again later.");
@@ -34,6 +38,14 @@ const Dashboard = () => {
   useEffect(() => {
     setIsLoading(true);
     fetchDashboardStats();
+    //ensuring that you handle state and asynchronous data correctly, you should be able to avoid issues related to accessing properties
+    // of undefined or incorrectly structured objects.
+
+    if (data && Array.isArray(data.lastAccount)) {
+      console.log(data.lastAccount.length);
+  } else {
+      console.log('lastAccount is not defined or not an array');
+  }
   }, []);
 
   if(isLoading)
@@ -48,19 +60,19 @@ const Dashboard = () => {
     <Stats
     dt={{
       balance: data?.availableBalance,
-      income: data?.totleIncome,
-      expense: data?.totlaExpense
+      income: data?.totalIncome,
+      expense: data?.totalExpense
     }}
     />
 
     <div className='flex flex-col-reverse items-center gap-10 w-full md:flex-row'>
       <Chart data={data?.chartData} />
-      {data?.totleIncome >0 && (
+      {data?.totalIncome >0 && (
         <DoughnutChart
         dt={{
           balance: data?.availableBalance,
-          income: data?.totleIncome,
-          expense: data?.totlaExpense
+          income: data?.totalIncome,
+          expense: data?.totalExpense
         }}
          />
       )}
@@ -68,6 +80,7 @@ const Dashboard = () => {
     <div className='flex flex-col-reverse gap-0 md:flex-row md:gap-10 2xl:gap-20'>
       <RecentTransactions data={data?.lastTransactions} />
       {data?.lastAccount?.lenght > 0 && <Accounts data={data?.lastAccount} />}
+      <Accounts data={data?.lastAccount} />
     </div>
   </div>
   );

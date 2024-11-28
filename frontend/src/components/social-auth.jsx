@@ -64,7 +64,7 @@ export const  SocialAuth = ({ isLoading, setLoading}) => {
                     localStorage.setItem("user", JSON.stringify(userInfo));
                     setCredentials(userInfo);
                     setTimeout(() => {
-                        navigate("/overview");
+                        navigate("/dashboard");
                         //setLoading(false);
                     }, 1500);
                 }
@@ -80,7 +80,7 @@ export const  SocialAuth = ({ isLoading, setLoading}) => {
         if (user) {
             saveUserToDo();
         }
-    }, [user]);
+    }, [user?.uid]);
 
     return (
         <div className="flex items-center gap-2">

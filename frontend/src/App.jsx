@@ -46,7 +46,7 @@ function App() {
           <Route element={<RootLayout />}>
             {/* <Route path="/" element={<Navigate to="/overview"/>}/> */}
             <Route path="/" element={<Dashboard/>}/>
-            <Route path="/Dashboard" element={<Dashboard/>}/>
+            <Route path="/dashboard" element={<Dashboard/>}/>
             <Route path="/transactions" element={<Transactions/>}/>
             <Route path="/settings" element={<Settings/>}/>
             <Route path="/accounts" element={<AccountPage/>}/>

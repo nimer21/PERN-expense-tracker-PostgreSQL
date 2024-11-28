@@ -36,6 +36,7 @@ const Chart = ({ data }) => {
           <CartesianGrid strokeDasharray='3 3' />
           <YAxis />
           <XAxis dataKey={"label"} padding={{ left: 30, right: 30 }} />
+          <Tooltip />
           <Legend />
           <Line type='monotone' dataKey={"income"} stroke='#8884d8' activeDot={{ r: 8 }} />
           <Line type='monotone' dataKey={"expense"} stroke='#82ca9d' />

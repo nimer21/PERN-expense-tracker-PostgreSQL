@@ -8,6 +8,7 @@ import { formatCurrency } from '../libs';
 import { Button } from './ui/button';
 import { MdOutlineWarning } from 'react-icons/md';
 import Input from './ui/input';
+import { toast } from 'sonner';
 
 const AddTransaction = ({ isOpen, setIsOpen, refetch }) => {
     const { user } = useState((state ) => state);
@@ -32,6 +33,8 @@ const AddTransaction = ({ isOpen, setIsOpen, refetch }) => {
             `/transaction/add-transaction/${accountInfo.id}`,
              newData
             );
+            console.log("data=> ",data); // {description: 'Chips', amount: '5'}
+            console.log("res=> ",res); // {status: 'success', message: 'Transaction completed successfully.'}
           if (res?.status === "success") {
             toast.success(res?.message);
             setIsOpen(false);
